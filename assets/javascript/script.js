@@ -3,28 +3,25 @@
 var genreInput = $('#genreInput');
 
 var genres = [
-      "Action",
-      "Horror",
-      "Comedy",
-      "Drama",
-      "Crime",
-      "Thriller",
-      "Romance",
-      "Arthouse",
-      "Biopic",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Drama",
+    "Documentary",
+    "Family",
+    "Fantasy",
+    "History",
+    "Horror",
+    "Music",
+    "Mystery",
+    "Romance",
+    "Science Fiction",
+    "TV Movie",
+    "Thriller",
+    "War",
+    "Western"
 ];
  $( "#genreInput" ).autocomplete({
    source: genres
