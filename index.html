@@ -1,14 +1,38 @@
 <!-- Starter Page -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Movie Recommender</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body>
-    <h1>Movie Recommender</h1>
-    <script src="./assets/js/script.js"></script>
+    <!-- Nav Bar  -->
+    <header>
+        <nav>
+            <button id="fav-bttn">Favorites</button>
+        </nav>
+    </header>
+    <!-- intro information w/ input -->
+    <div class="container" id="firstPage">
+        <h1 class="title"><strong>Movie Recommender</strong></h1>
+        <p class="subtitle">Let us help you search for movies!</p>
+    </div>
+    <div>
+        <input class="input" type="text" placeholder="Text input">
+        <script src="./assets/js/script.js"></script>
+    </div>
+
+<input class="button" type="submit" value="Pick for Me">
+<input class="button" type="reset" value="Recommended">
+<!-- First page ends here -->
+
+
 </body>
+
+
 </html>
