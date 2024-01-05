@@ -7,6 +7,21 @@ var firstPage = $('.first-page');
 var recommendPage = $('.recommend-page');
 var pickPage = $('.pick-page');
 
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: 'https://api.themoviedb.org/3/authentication',
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTg1YTgxZDBhNzVlODVkYTc4NWU2ODJhZTJjYzExZCIsInN1YiI6IjY1OTVkZDVmODY5ZTc1MGFjNDA2NTYyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y3kNEHUL4Uo-wCB8D_Dbr6OAC6jE-zzjQolpMSb-f3A'
+  }
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
 var genres = [
     "Action",
     "Adventure",
@@ -46,4 +61,4 @@ function randomRecommend(){
 
 
 $(recommendation).click(randomRecommend);
-// $(pickForMe).on(randomPicker());
+// $(pickForMe).click(randomPicker());
