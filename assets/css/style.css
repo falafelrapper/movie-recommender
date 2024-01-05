@@ -32,9 +32,10 @@ nav {
     align-items: center;   
 }
 /* display:none hides the containers box except the starter page*/
-.hidden-containers {
+.hidden{
     display: none;
 }
+
 body{
     background-color: var(--heliotrope);
 }
