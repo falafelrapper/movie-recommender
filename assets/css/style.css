@@ -1,1 +1,40 @@
-/* Main Stylesheet *
+
+/* root */
+:root {
+    --outer-space: #33393f;
+    --bright-turquoise: #2aefcb;
+    --gin: #e0eae4;
+    --heliotrope: hsl(298, 57%, 70%);
+    --sky-blue: #42cce1ff;
+  }
+/* Nav. favorite button*/
+#fav-bttn {
+    background:none;
+    border: none;
+    font-size: medium;
+    font-weight:bolder;
+    
+}
+#fav-bttn:hover {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+}
+nav {
+    display: flex;  
+    background-color: var(--heliotrope);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;   
+}
+/* display:none hides the containers box except the starter page*/
+.hidden-containers {
+    display: none;
+}
+body{
+    background-color: var(--heliotrope);
+}
