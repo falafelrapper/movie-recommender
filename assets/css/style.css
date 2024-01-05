@@ -1,3 +1,9 @@
+/* applied to all */
+* {
+    background-color: var(--heliotrope);
+    width: auto;
+    height: fit-content;
+}
 
 /* root */
 :root {
@@ -6,22 +12,25 @@
     --gin: #e0eae4;
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
-  }
+}
+
 /* Nav. favorite button*/
 #fav-bttn {
-    background:none;
+    background: none;
     border: none;
     font-size: medium;
-    font-weight:bolder;
-    
+    font-weight: bolder;
+
 }
+
 #fav-bttn:hover {
     cursor: pointer;
     font-style: italic;
     font-weight: bold;
 }
+
 nav {
-    display: flex;  
+    display: flex;
     background-color: var(--heliotrope);
 }
 
@@ -29,13 +38,37 @@ nav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;   
-}
-/* display:none hides the containers box except the starter page*/
-.hidden{
-    display: none;
+    align-items: center;
 }
 
-body{
-    background-color: var(--heliotrope);
+.input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#genreInput {
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page1Bttn{
+    
+    justify-content: center;
+    display:inline-block;
+    
+    
+}
+
+ /* display:none hides the containers box except the starter page
+/* .hidden{
+    display: none; 
+} */
+
+.recommend-page{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;   
 }

@@ -24,17 +24,19 @@
             <h1 class="title"><strong>Movie Recommender</strong></h1>
             <p class="subtitle">Let us help you search for movies!</p>
         </div>
-        <div>
+        <div class="input-area">
             <input class="input" type="text" id="genreInput" placeholder="Text input">
-            <input class="button" type="submit" id="pickMe" value="Pick for Me">
-            <input class="button" type="submit" id="recommendMe" value="Recommended">
+            <div class="page1Bttn">
+                <input class="button is-link" type="submit" id="pickMe" value="Pick for Me">
+                <input class="button is-link" type="submit" id="recommendMe" value="Recommended">
+            </div>
         </div>
     </div>
     <!-- First page ends here -->
     <!-- second page starts here -->
     <div class="recommend-page hidden">
         <p>
-        <h2></h2>
+        <h2><strong>Here are 5 recommended movies for you!</strong></h2>
         </p>
         <ul>
             <li></li>
@@ -43,7 +45,7 @@
             <li></li>
             <li></li>
         </ul>
-        <button class="button" type="submit">Refresh</button>
+        <button class="button is-link" type="submit">Refresh</button>
     </div>
     <!-- Second page ends here -->
 
