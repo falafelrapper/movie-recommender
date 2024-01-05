@@ -19,18 +19,20 @@
         </nav>
     </header>
     <!-- intro information w/ input -->
-    <div class="container" id="firstPage">
-        <h1 class="title"><strong>Movie Recommender</strong></h1>
-        <p class="subtitle">Let us help you search for movies!</p>
-    </div>
-    <div>
-        <input class="input" type="text" id="genreInput" placeholder="Text input">
-        <input class="button" type="submit" value="Pick for Me">
-        <input class="button" type="submit" value="Recommended">
+    <div class="first-page">
+        <div class="container" id="firstPage">
+            <h1 class="title"><strong>Movie Recommender</strong></h1>
+            <p class="subtitle">Let us help you search for movies!</p>
+        </div>
+        <div>
+            <input class="input" type="text" id="genreInput" placeholder="Text input">
+            <input class="button" type="submit" id="pickMe" value="Pick for Me">
+            <input class="button" type="submit" id="recommendMe" value="Recommended">
+        </div>
     </div>
     <!-- First page ends here -->
     <!-- second page starts here -->
-    <div>
+    <div class="recommend-page hidden">
         <p>
         <h2></h2>
         </p>
@@ -43,6 +45,7 @@
         </ul>
         <button class="button" type="submit">Refresh</button>
     </div>
+    <!-- Second page ends here -->
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
