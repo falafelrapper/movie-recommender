@@ -1,8 +1,9 @@
-/* applied to all */
+/* universal styling */
 * {
-    background-color: var(--heliotrope);
     width: auto;
     height: fit-content;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--heliotrope);
 }
 
 /* root */
@@ -12,26 +13,39 @@
     --gin: #e0eae4;
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
+    --white: white;
+}
+/* NavBar */
+
+nav {
+    display: flex;
+    justify-content: space-around;
+
 }
 
-/* Nav. favorite button*/
-#fav-bttn {
+/* Nav. favorite & home  button*/
+#fav-bttn, #home-bttn {
+    padding: 30px;
     background: none;
     border: none;
     font-size: medium;
     font-weight: bolder;
-
 }
 
+
 #fav-bttn:hover {
+    color: aliceblue;
     cursor: pointer;
     font-style: italic;
     font-weight: bold;
+    text-shadow: var(--bright-turquoise)
 }
-
-nav {
-    display: flex;
-    background-color: var(--heliotrope);
+#home-bttn:hover {
+    color: aliceblue;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: var(--bright-turquoise)
 }
 
 .container {
@@ -41,7 +55,12 @@ nav {
     align-items: center;
 }
 
+p{
+    padding: 10px;
+}
+
 .input-area {
+    padding:15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,24 +72,26 @@ nav {
     align-items: center;
     justify-content: center;
 }
-.page1Bttn{
-    
+
+.page1Bttn {
+    padding: 10px;
     justify-content: center;
-    display:inline-block;
-    
-    
+    display: inline-block;
 }
 
- /* display:none hides the containers box except the starter page
-/* .hidden{
-    display: none; 
-} */
+ul {
+    padding: 10px;
+}
 
-.recommend-page{
+
+/* display:none hides the containers box except the starter page */
+.hidden{
+    display: none; 
+}
+
+.recommend-page {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;   
+    align-items: center;
 }
-
-
