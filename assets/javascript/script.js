@@ -7,20 +7,9 @@ var firstPage = $('.first-page');
 var recommendPage = $('.recommend-page');
 var pickPage = $('.pick-page');
 
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: 'https://api.themoviedb.org/3/authentication',
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTg1YTgxZDBhNzVlODVkYTc4NWU2ODJhZTJjYzExZCIsInN1YiI6IjY1OTVkZDVmODY5ZTc1MGFjNDA2NTYyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y3kNEHUL4Uo-wCB8D_Dbr6OAC6jE-zzjQolpMSb-f3A'
-  }
-};
+const apiKey = '8a85a81d0a75e85da785e682ae2cc11d'; // Replace with your TMDb API key
+const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
 
 var genres = [
     "Action",
@@ -48,7 +37,69 @@ var genres = [
    source: genres
 });
 
+var genreMapping = {
+  "Action": 28,
+  "Adventure": 12,
+  "Animation": 16,
+  "Comedy": 35,
+  "Crime": 80,
+  "Drama": 18,
+  "Documentary": 99,
+  "Family": 10751,
+  "Fantasy": 14,
+  "History": 36,
+  "Horror": 27,
+  "Music": 10402,
+  "Mystery": 9648,
+  "Romance": 10749,
+  "Science Fiction": 878,
+  "TV Movie": 10770,
+  "Thriller": 53,
+  "War": 10752,
+  "Western": 37
+};
+
+function getGenreId(genreName) {
+  return genreMapping[genreName] || null; // Return null if the genre is not found
+}
+
+
 function randomRecommend(){
+  var selectedGenre = genreInput.val();
+
+  // Make an API request to TMDb to get the top 100 most popular movies in the specified genre
+  $.ajax({
+      url: 'https://api.themoviedb.org/3/movie/top_rated',
+      method: 'GET',
+      data: {
+          api_key: apiKey,
+          with_genres: getGenreId(selectedGenre),
+          sort_by: 'vote_average.desc',  // Sort by popularity in descending order
+          page: 1  // Assuming you want the first page of results (adjust as needed)
+      },
+      success: function(response) {
+          // Check if there are movies in the response
+          if (response.results && response.results.length > 0) {
+              // Randomly select 5 movies from the top 100
+              var randomMovies = [];
+              for (var i = 0; i < 5; i++) {
+                  var randomIndex = Math.floor(Math.random() * response.results.length);
+                  randomMovies.push(response.results[randomIndex]);
+              }
+
+              console.log('Randomly selected movies:', randomMovies);
+
+              // Process the selected movies and update your UI as needed
+          } else {
+              console.warn('No movies found for the specified genre.');
+              // Handle the case where no movies are found
+          }
+      },
+      error: function(error) {
+          console.error('Error fetching data from TMDb:', error);
+          // Handle errors, update UI accordingly
+      }
+  });
     firstPage.addClass('hidden');
 
     recommendPage.removeClass('hidden');
