@@ -7,7 +7,7 @@ var firstPage = $('.first-page');
 var recommendPage = $('.recommend-page');
 var pickPage = $('.pick-page');
 
-const apiKey = '8a85a81d0a75e85da785e682ae2cc11d'; // Replace with your TMDb API key
+const apiKey = '8a85a81d0a75e85da785e682ae2cc11d';
 const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
 
 
@@ -60,27 +60,24 @@ var genreMapping = {
 };
 
 function getGenreId(genreName) {
-  return genreMapping[genreName] || null; // Return null if the genre is not found
+  return genreMapping[genreName] || null;
 }
 
 
 function randomRecommend(){
   var selectedGenre = genreInput.val();
 
-  // Make an API request to TMDb to get the top 100 most popular movies in the specified genre
   $.ajax({
       url: 'https://api.themoviedb.org/3/movie/top_rated',
       method: 'GET',
       data: {
           api_key: apiKey,
           with_genres: getGenreId(selectedGenre),
-          sort_by: 'vote_average.desc',  // Sort by popularity in descending order
-          page: 1  // Assuming you want the first page of results (adjust as needed)
+          sort_by: 'vote_average.desc',
+          page: 1 
       },
       success: function(response) {
-          // Check if there are movies in the response
           if (response.results && response.results.length > 0) {
-              // Randomly select 5 movies from the top 100
               var randomMovies = [];
               for (var i = 0; i < 5; i++) {
                   var randomIndex = Math.floor(Math.random() * response.results.length);
@@ -89,20 +86,34 @@ function randomRecommend(){
 
               console.log('Randomly selected movies:', randomMovies);
 
-              // Process the selected movies and update your UI as needed
+              displayMovies(randomMovies);
           } else {
               console.warn('No movies found for the specified genre.');
-              // Handle the case where no movies are found
           }
       },
       error: function(error) {
           console.error('Error fetching data from TMDb:', error);
-          // Handle errors, update UI accordingly
       }
   });
     firstPage.addClass('hidden');
 
     recommendPage.removeClass('hidden');
+}
+
+
+function displayMovies(movies){
+  var recommendationList = $('#recommendList');
+  recommendationList.empty();
+
+  movies.forEach(function(movie) {
+    var movieCard = $('<div class="movie-card">');
+    movieCard.append('<h2>' + movie.title + '</h2>');
+    movieCard.append('<p>' + movie.overview + '</p>');
+    movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+    movieCard.append('<button class="button" type="submit">Read More</button>');
+
+    recommendationList.append(movieCard);
+});
 }
 
 // function randomPicker(){
