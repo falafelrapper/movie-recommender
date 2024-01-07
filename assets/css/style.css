@@ -85,14 +85,13 @@ ul {
 
 
 /* display:none hides the containers box except the starter page */
+.hidden{
+    display: none; 
+}
 
 .recommend-page {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-}
-
-.hidden{
-    display: none; 
 }
