@@ -101,26 +101,56 @@ function randomRecommend(){
 }
 
 
-function displayMovies(movies){
-  var recommendationList = $('#recommendList');
-  recommendationList.empty();
 
-  movies.forEach(function(movie) {
-    var movieCard = $('<div class="movie-card">');
-    movieCard.append('<h2>' + movie.title + '</h2>');
-    movieCard.append('<p>' + movie.overview + '</p>');
-    movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
-    movieCard.append('<button class="button" type="submit">Read More</button>');
+function randomPicker(){
+  var selectedGenre = genreInput.val();
+  
+  $.ajax({
+      url: 'https://api.themoviedb.org/3/movie/top_rated',
+      method: 'GET',
+      data: {
+          api_key: apiKey,
+          with_genres: getGenreId(selectedGenre),
+          sort_by: 'vote_average.desc',
+          page: 1 
+        },
+      success: function(response) {
+        if (response.results && response.results.length > 0) {
+          var randomMovies = [];
+              for (var i = 0; i < 5; i++) {
+                var randomIndex = Math.floor(Math.random() * response.results.length);
+                  randomMovies.push(response.results[randomIndex]);
+              }
 
-    recommendationList.append(movieCard);
-});
-}
+              console.log('Randomly selected movies:', randomMovies);
 
-// function randomPicker(){
-//     firstPage.addClass('hidden');
-//     pickPage.removeClass('hidden');
-// }
-
-
-$(recommendation).click(randomRecommend);
-// $(pickForMe).click(randomPicker());
+              displayMovies(randomMovies);
+            } else {
+              console.warn('No movies found for the specified genre.');
+            }
+          },
+          error: function(error) {
+            console.error('Error fetching data from TMDb:', error);
+          }
+        });
+    firstPage.addClass('hidden');
+    pickPage.removeClass('hidden');
+  }
+  
+  function displayMovies(movies){
+    var recommendationList = $('#recommendList');
+    recommendationList.empty();
+  
+    movies.forEach(function(movie) {
+      var movieCard = $('<div class="movie-card">');
+      movieCard.append('<h2>' + movie.title + '</h2>');
+      movieCard.append('<p>' + movie.overview + '</p>');
+      movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+      movieCard.append('<button class="button" type="submit">Read More</button>');
+  
+      recommendationList.append(movieCard);
+  });
+  }
+  
+  $(recommendation).click(randomRecommend);
+  $(pickForMe).click(randomPicker);
