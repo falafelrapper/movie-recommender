@@ -24,7 +24,12 @@ h2 {
     font-weight: bolder;
     color: white;
 }
-
+/* adding font color and size*/
+h2 strong {
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+}
 h2 {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(232, 232, 70);
@@ -36,7 +41,9 @@ p {
 }
 
 body {
-    color:white (255, 255, 255);
+    color: white;
+    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+    min-height: 1000px;
 }
 
 /* NavBar */
