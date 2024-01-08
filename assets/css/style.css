@@ -1,9 +1,8 @@
 /* universal styling */
 * {
-    /* width: auto;
-    height: fit-content; */
+    width: auto;
+    height: fit-content;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-color: var(--heliotrope); */
 }
 
 /* root */
@@ -26,6 +25,11 @@ h2 {
     color: white;
 }
 
+h2 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(232, 232, 70);
+    margin-top: 40px;
+}
 p {
     color: var(--white);
     margin: 15px 15px;
@@ -90,6 +94,8 @@ nav {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    background: transparent;
+
 }
 
 p {
@@ -126,6 +132,11 @@ ul {
 
 .button {
     margin: 10px;
+}
+
+body h2{
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-weight: bolder;
 }
 
 /* display:none hides the containers box except the starter page */
