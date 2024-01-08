@@ -21,11 +21,15 @@
 nav {
     display: flex;
     justify-content: space-around;
+    background-color: rgb(127, 255, 172);
 
 }
 
+
+
 body{
     min-height: 1000px;
+    margin: auto;
 }
 
 /* Nav. favorite & home  button*/
@@ -36,6 +40,7 @@ body{
     font-size: medium;
     font-weight: bolder;
     color: var(--black);
+    
 }
 
 
@@ -105,3 +110,17 @@ ul {
 .hidden{
     display: none; 
 } 
+
+.h2 strong {
+    font-family: 'YourSpecificFont', Arial, sans-serif; /* Change 'YourSpecificFont' to the desired font family */
+    font-weight: bold;
+    font-size: larger;
+
+}
+.button-is-link{
+    cursor: pointer;
+    flex-wrap: wrap;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
