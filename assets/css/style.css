@@ -15,9 +15,9 @@
 }
 
 /* all style applied to page class */
-.page {
+/* .page {
     background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
-}
+} */
 
 h1,
 h2 {
@@ -37,6 +37,8 @@ p {
 
 body {
     color: white;
+    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+    min-height: 1000px;
 }
 
 /* NavBar */
