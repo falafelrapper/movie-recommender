@@ -14,6 +14,7 @@
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
     --white: white;
+    --black: #000000;
 }
 /* NavBar */
 
@@ -23,6 +24,10 @@ nav {
 
 }
 
+body{
+    min-height: 1000px;
+}
+
 /* Nav. favorite & home  button*/
 #fav-bttn, #home-bttn {
     padding: 30px;
@@ -30,6 +35,7 @@ nav {
     border: none;
     font-size: medium;
     font-weight: bolder;
+    color: var(--black);
 }
 
 
@@ -98,13 +104,4 @@ ul {
 
 .hidden{
     display: none; 
-}
- 
-.button-is-link:hover{
-    font-size: medium;
-    font-weight: bolder;
-   
-
-}
-
-
+} */
