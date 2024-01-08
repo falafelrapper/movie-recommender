@@ -146,6 +146,31 @@ function fetchMoviesForPicker(selectedGenre, page) {
 
         console.log('Randomly selected movie from page ' + page + ':', selectedMovie);
 
+              displayMovies(randomMovies);
+            } else {
+              console.warn('No movies found for the specified genre.');
+            }
+          },
+          error: function(error) {
+            console.error('Error fetching data from TMDb:', error);
+          }
+        });
+    firstPage.addClass('hidden');
+    pickPage.removeClass('hidden');
+  }
+  
+  function displayMovies(movies){
+    var recommendationList = $('#recommendList');
+    recommendationList.empty();
+  
+    movies.forEach(function(movie) {
+      var movieCard = $('<div class="movie-card">');
+      movieCard.append('<h2 class="movie-title">' + movie.title + '</h2>');
+      movieCard.append('<p>' + movie.overview + '</p>');
+      movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+      movieCard.append('<button class="button" type="submit">Read More</button>');
+  
+      recommendationList.append(movieCard);
         displayMovies([selectedMovie]);
         return;
       } else {
@@ -159,6 +184,23 @@ function fetchMoviesForPicker(selectedGenre, page) {
     error: function (error) {
       console.error('Error fetching data from TMDb:', error);
     }
+  });
+  firstPage.addClass('hidden');
+  recommendPage.removeClass('hidden');
+}
+
+function displayMovies(movies) {
+  var recommendationList = $('#recommendList');
+  recommendationList.empty();
+
+  movies.forEach(function (movie) {
+    var movieCard = $('<div class="movie-card">');
+    movieCard.append('<h2>' + movie.title + '</h2>');
+    movieCard.append('<p>' + movie.overview + '</p>');
+    movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+    movieCard.append('<button class="button" type="submit">Read More</button>');
+
+    recommendationList.append(movieCard);
   });
   firstPage.addClass('hidden');
   recommendPage.removeClass('hidden');
