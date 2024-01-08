@@ -16,7 +16,7 @@
 }
 
 /* all style applied to page class */
-.page {
+.page {    
     background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
 }
 
@@ -41,6 +41,7 @@ nav {
     display: flex;
     justify-content: space-around;
     background-color: black;
+    height: 50px;
 }
 
 /* Nav. favorite & home  button*/
@@ -76,8 +77,12 @@ nav {
 }
 
 /* first page container */
-.page {
-    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+.first-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 300px;
+    height: 100vh;
 }
 
 .container {
@@ -86,7 +91,6 @@ nav {
     flex-wrap: wrap;
     align-items: center;
     background: transparent;
-
 }
 
 p {

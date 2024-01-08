@@ -21,15 +21,17 @@
     </header>
     <!-- intro information w/ input -->
     <div class="first-page page">
-        <div class="container" id="firstPage">
-            <h1 class="title"><strong>Movie Recommender</strong></h1>
-            <p class="subtitle">Let us help you search for movies!<i class="fa-solid fa-film"></i></p>
-        </div>
-        <div class="input-area">
-            <input class="input" type="text" id="genreInput" placeholder="Text input">
-            <div class="page1Bttn">
-                <input class="button is-link" type="submit" id="pickMe" value="Pick for Me">
-                <input class="button is-link" type="submit" id="recommendMe" value="Recommended">
+        <div>
+            <div class="container" id="firstPage">
+                <h1 class="title"><strong>Movie Recommender</strong></h1>
+                <p class="subtitle">Let us help you search for movies!<i class="fa-solid fa-film"></i></p>
+            </div>
+            <div class="input-area">
+                <input class="input" type="text" id="genreInput" placeholder="Text input">
+                <div class="page1Bttn">
+                    <input class="button is-link" type="submit" id="pickMe" value="Pick for Me">
+                    <input class="button is-link" type="submit" id="recommendMe" value="Recommended">
+                </div>
             </div>
         </div>
     </div>
@@ -55,9 +57,7 @@
     <!-- end of  third page-->
     <!-- start of pick page -->
     <div class="pick-page hidden page">
-        <p>
         <h2>Here is your picked movie!</h2>
-        </p>
         <div id="recommendList"></div>
         <button class="button is-link" type="submit">Refresh</button>
     </div>
