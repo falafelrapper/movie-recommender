@@ -143,7 +143,7 @@ function randomPicker(){
   
     movies.forEach(function(movie) {
       var movieCard = $('<div class="movie-card">');
-      movieCard.append('<h2>' + movie.title + '</h2>');
+      movieCard.append('<h2 class="movie-title">' + movie.title + '</h2>');
       movieCard.append('<p>' + movie.overview + '</p>');
       movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
       movieCard.append('<button class="button" type="submit">Read More</button>');
