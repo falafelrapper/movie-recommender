@@ -146,14 +146,14 @@ function fetchMoviesForPicker(selectedGenre, page) {
 
         console.log('Randomly selected movie from page ' + page + ':', selectedMovie);
 
-        displayMovies([selectedMovie]);
+        displayMovies(randomMovies);
         return;
       } else {
-        console.warn('No movies found for the specified genre on page ' + page + '.');
+        console.warn('No movies found for the specified genre.');
       }
 
       if (page === totalPages) {
-        console.warn('No movies found for the specified genre on any page.');
+        console.warn('No movies found for the specified genre on any page.')
       }
     },
     error: function (error) {
@@ -161,7 +161,7 @@ function fetchMoviesForPicker(selectedGenre, page) {
     }
   });
   firstPage.addClass('hidden');
-  recommendPage.removeClass('hidden');
+  pickPage.removeClass('hidden');
 }
 
 function displayMovies(movies) {
@@ -170,10 +170,12 @@ function displayMovies(movies) {
 
   movies.forEach(function (movie) {
     var movieCard = $('<div class="movie-card">');
-    movieCard.append('<h2>' + movie.title + '</h2>');
+    movieCard.append('<h2 class="movie-title">' + movie.title + '</h2>');
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
     movieCard.append('<button class="button" type="submit">Read More</button>');
+
+    recommendationList.append(movieCard);
 
     recommendationList.append(movieCard);
   });

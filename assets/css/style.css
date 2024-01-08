@@ -2,8 +2,7 @@
 * {
     width: auto;
     height: fit-content;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--heliotrope);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* root */
@@ -13,45 +12,81 @@
     --gin: #e0eae4;
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
-    --white: white;
-    --black: #000000;
 }
+
+/* all style applied to page class */
+.page {
+    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+}
+
+h1,
+h2 {
+    font-weight: bolder;
+    color: white;
+}
+
+h2 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(232, 232, 70);
+    margin-top: 40px;
+}
+p {
+    color: var(--white);
+    margin: 15px 15px;
+}
+
+body {
+    color: white;
+}
+
 /* NavBar */
 
 nav {
     display: flex;
     justify-content: space-around;
-
-}
-
-body{
-    min-height: 1000px;
+    background-color: black;
+    height: 50px;
 }
 
 /* Nav. favorite & home  button*/
-#fav-bttn, #home-bttn {
-    padding: 30px;
+#fav-bttn,
+#home-bttn {
+    color: rgb(171, 171, 43);
+    padding: 10px;
     background: none;
     border: none;
     font-size: medium;
     font-weight: bolder;
-    color: var(--black);
 }
 
+.title,
+.subtitle {
+    color: white;
+}
 
 #fav-bttn:hover {
-    color: aliceblue;
+    color: rgb(248, 248, 0);
     cursor: pointer;
     font-style: italic;
     font-weight: bold;
     text-shadow: var(--bright-turquoise)
 }
+
 #home-bttn:hover {
-    color: aliceblue;
+    color: rgb(248, 248, 0);
     cursor: pointer;
     font-style: italic;
     font-weight: bold;
     text-shadow: var(--bright-turquoise)
+}
+
+/* first page container */
+.first-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 300px;
+    height: 100vh;
 }
 
 .container {
@@ -59,17 +94,12 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    background: transparent;
+
 }
 
-p{
+p {
     padding: 10px;
-}
-
-.input-area {
-    padding:15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 #genreInput {
@@ -89,9 +119,27 @@ ul {
     padding: 10px;
 }
 
+.movie-card {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    outline: 3px ridge var(--gin);
+    outline-color: lightgray;
+    outline-offset: -5px;
+}
+
+.button {
+    margin: 10px;
+}
+
+body h2{
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-weight: bolder;
+}
 
 /* display:none hides the containers box except the starter page */
-
 .recommend-page {
     display: flex;
     flex-direction: column;
@@ -99,6 +147,10 @@ ul {
     align-items: center;
 }
 
-.hidden{
-    display: none; 
+.movie-title {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
 }
