@@ -7,7 +7,7 @@ var firstPage = $('.first-page');
 var recommendPage = $('.recommend-page');
 var pickPage = $('.pick-page');
 var refreshRecommend = $('#refresh-recommend');
-var refreshPick = $('#refresh-pick');
+var refreshPicker = $('#refresh-pick');
 
 const apiKey = '8a85a81d0a75e85da785e682ae2cc11d';
 const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
@@ -68,100 +68,124 @@ function getGenreId(genreName) {
 
 function randomRecommend() {
   var selectedGenre = genreInput.val();
-  var totalPages = 5;
+  var totalPages = 50;
+  var allMovies = [];
 
-  for (var page = 1; page <= totalPages; page++) {
-    fetchMovies(selectedGenre, page);
-  }
+  var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
+    fetchMovies(selectedGenre, page + 1)
+      .then(movies => allMovies.push(...movies))
+  );
+
+  Promise.all(fetchPromises)
+    .then(() => {
+      if (allMovies.length > 0) {
+        var randomMovies = [];
+        while (randomMovies.length < 5 && allMovies.length > 0) {
+          var randomIndex = Math.floor(Math.random() * allMovies.length);
+          var selectedMovie = allMovies.splice(randomIndex, 1)[0];
+          randomMovies.push(selectedMovie);
+        }
+
+        console.log('Randomly selected movies:', randomMovies);
+
+        displayMovies(randomMovies);
+
+        firstPage.addClass('hidden');
+        recommendPage.removeClass('hidden');
+      } else {
+        console.warn('No top-rated movies found.');
+      }
+    })
+    .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
 function fetchMovies(selectedGenre, page) {
-  $.ajax({
-    url: 'https://api.themoviedb.org/3/movie/top_rated',
-    method: 'GET',
-    data: {
-      api_key: apiKey,
-      sort_by: 'vote_average.desc',
-      page: page,
-    },
-    success: function (response) {
-      if (response.results && response.results.length > 0) {
-        var genreId = getGenreId(selectedGenre);
-        var filteredMovies = response.results.filter(movie => movie.genre_ids.includes(genreId));
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: 'https://api.themoviedb.org/3/movie/top_rated',
+      method: 'GET',
+      data: {
+        api_key: apiKey,
+        sort_by: 'vote_average.desc',
+        page: page,
+      },
+      success: function (response) {
+        if (response.results && response.results.length > 0) {
+          var genreId = getGenreId(selectedGenre);
+          var filteredMovies = response.results.filter(movie => movie.genre_ids.includes(genreId));
 
-        if (filteredMovies.length > 0) {
-          var randomMovies = [];
-          while (randomMovies.length < 5 && filteredMovies.length > 0) {
-            var randomIndex = Math.floor(Math.random() * filteredMovies.length);
-            var selectedMovie = filteredMovies.splice(randomIndex, 1)[0];
-            randomMovies.push(selectedMovie);
-          }
-
-          console.log('Randomly selected movies from page ' + page + ':', randomMovies);
-
-          displayMovies(randomMovies);
-          return;
+          resolve(filteredMovies);
+        } else {
+          reject('No top-rated movies found on page ' + page + '.');
         }
-      } else {
-        console.warn('No top-rated movies found on page ' + page + '.');
+      },
+      error: function (error) {
+        reject('Error fetching data from TMDb:', error);
       }
-
-      if (page === totalPages) {
-        console.warn('No top-rated movies found on any page.');
-      }
-    },
-    error: function (error) {
-      console.error('Error fetching data from TMDb:', error);
-    }
+    });
   });
-  firstPage.addClass('hidden');
-  recommendPage.removeClass('hidden');
 }
-
 
 
 
 function randomPicker() {
   var selectedGenre = genreInput.val();
-  var totalPages = 1;
+  var totalPages = 50;
+  var allMovies = [];
 
-  for (var page = 1; page <= totalPages; page++) {
-    fetchMoviesForPicker(selectedGenre, page);
-  }
+  var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
+    fetchMovies(selectedGenre, page + 1)
+      .then(movies => allMovies.push(...movies))
+  );
+
+  Promise.all(fetchPromises)
+    .then(() => {
+      if (allMovies.length > 0) {
+        var randomMovies = [];
+        while (randomMovies.length < 1 && allMovies.length > 0) {
+          var randomIndex = Math.floor(Math.random() * allMovies.length);
+          var selectedMovie = allMovies.splice(randomIndex, 1)[0];
+          randomMovies.push(selectedMovie);
+        }
+
+        console.log('Randomly selected movies:', randomMovies);
+
+        displayMovies(randomMovies);
+
+        firstPage.addClass('hidden');
+        recommendPage.removeClass('hidden');
+      } else {
+        console.warn('No top-rated movies found.');
+      }
+    })
+    .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
 function fetchMoviesForPicker(selectedGenre, page) {
-  $.ajax({
-    url: 'https://api.themoviedb.org/3/movie/top_rated',
-    method: 'GET',
-    data: {
-      api_key: apiKey,
-      sort_by: 'vote_average.desc',
-      page: page,
-    },
-    success: function (response) {
-      if (response.results && response.results.length > 0) {
-        var randomIndex = Math.floor(Math.random() * response.results.length);
-        var selectedMovie = response.results[randomIndex];
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: 'https://api.themoviedb.org/3/movie/top_rated',
+      method: 'GET',
+      data: {
+        api_key: apiKey,
+        sort_by: 'vote_average.desc',
+        page: page,
+      },
+      success: function (response) {
+        if (response.results && response.results.length > 0) {
+          var genreId = getGenreId(selectedGenre);
+          var filteredMovies = response.results.filter(movie => movie.genre_ids.includes(genreId));
 
-        console.log('Randomly selected movie from page ' + page + ':', selectedMovie);
-
-        displayMovies(randomMovies);
-        return;
-      } else {
-        console.warn('No movies found for the specified genre.');
+          resolve(filteredMovies);
+        } else {
+          reject('No top-rated movies found on page ' + page + '.');
+        }
+      },
+      error: function (error) {
+        reject('Error fetching data from TMDb:', error);
       }
-
-      if (page === totalPages) {
-        console.warn('No movies found for the specified genre on any page.')
-      }
-    },
-    error: function (error) {
-      console.error('Error fetching data from TMDb:', error);
-    }
+    });
   });
-  firstPage.addClass('hidden');
-  pickPage.removeClass('hidden');
 }
 
 function displayMovies(movies) {
@@ -170,19 +194,118 @@ function displayMovies(movies) {
 
   movies.forEach(function (movie) {
     var movieCard = $('<div class="movie-card">');
-    movieCard.append('<h2 class="movie-title">' + movie.title + '</h2>');
+    movieCard.append('<h2>' + movie.title + '</h2>');
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+    movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
     movieCard.append('<button class="button" type="submit">Read More</button>');
-
-    recommendationList.append(movieCard);
 
     recommendationList.append(movieCard);
   });
   previousMovies = movies;
 }
 
+function displayMoviesPick(movies, genre) {
+  var pickList = $('#pick-list');
+  pickList.empty();
+
+  movies.forEach(function (movie) {
+    var movieCard = $('<div class="movie-card">');
+    movieCard.append('<h2>' + movie.title + '</h2>');
+    movieCard.append('<p>' + movie.overview + '</p>');
+    movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
+    movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
+    movieCard.append('<button class="button" type="submit">Read More</button>');
+
+    pickList.append(movieCard);
+  });
+  previousMovies = movies;
+}
+
+function addToFavorites(movieId) {
+  var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  if (!favorites.includes(movieId)) {
+    favorites.push(movieId);
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    console.log('Movie added to favorites!');
+  } else {
+    console.log('Movie is already in favorites!');
+  }
+}
+
+function refreshRec() {
+  var selectedGenre = genreInput.val();
+  var totalPages = 50;
+  var allMovies = [];
+
+  var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
+    fetchMovies(selectedGenre, page + 1)
+      .then(movies => allMovies.push(...movies))
+  );
+
+  Promise.all(fetchPromises)
+    .then(() => {
+      if (allMovies.length > 0) {
+        var randomMovies = [];
+        while (randomMovies.length < 5 && allMovies.length > 0) {
+          var randomIndex = Math.floor(Math.random() * allMovies.length);
+          var selectedMovie = allMovies.splice(randomIndex, 1)[0];
+          randomMovies.push(selectedMovie);
+        }
+
+        console.log('Randomly selected new movies:', randomMovies);
+
+        $('#recommendList').empty();
+
+        displayMovies(randomMovies);
+      } else {
+        console.warn('No top-rated movies found.');
+      }
+    })
+    .catch(error => console.error('Error fetching data from TMDb:', error));
+}
+
+function refreshPick() {
+  var selectedGenre = genreInput.val();
+  var totalPages = 50;
+  var allMovies = [];
+
+  var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
+    fetchMovies(selectedGenre, page + 1)
+      .then(movies => allMovies.push(...movies))
+  );
+
+  Promise.all(fetchPromises)
+    .then(() => {
+      if (allMovies.length > 0) {
+        var randomMovies = [];
+        while (randomMovies.length < 1 && allMovies.length > 0) {
+          var randomIndex = Math.floor(Math.random() * allMovies.length);
+          var selectedMovie = allMovies.splice(randomIndex, 1)[0];
+          randomMovies.push(selectedMovie);
+        }
+
+        console.log('Randomly selected new movies:', randomMovies);
+
+        $('#recommendList').empty();
+
+        displayMovies(randomMovies);
+      } else {
+        console.warn('No top-rated movies found.');
+      }
+    })
+    .catch(error => console.error('Error fetching data from TMDb:', error));
+}
+
 $(recommendation).click(randomRecommend);
-$(refreshRecommend).click(randomRecommend);
-$(refreshPick).click(randomPicker);
+$(refreshRecommend).click(refreshRec);
+$(refreshPicker).click(refreshPick);
 $(pickForMe).click(randomPicker);
+$(document).on('click', '.add-favorite', function() {
+  var movieId = $(this).data('movie-id');
+
+  addToFavorites(movieId);
+});

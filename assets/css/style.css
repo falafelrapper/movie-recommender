@@ -15,9 +15,9 @@
 }
 
 /* all style applied to page class */
-.page {
+/* .page {
     background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
-}
+} */
 
 h1,
 h2 {
@@ -36,7 +36,7 @@ p {
 }
 
 body {
-    color:blue (255, 255, 255);
+    color:white (255, 255, 255);
 }
 
 /* NavBar */
