@@ -13,7 +13,26 @@
     --gin: #e0eae4;
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
-    --white: white;
+}
+
+/* all style applied to page class */
+.page {
+    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+}
+
+h1,
+h2 {
+    font-weight: bolder;
+    color: white;
+}
+
+p {
+    color: var(--white);
+    margin: 15px 15px;
+}
+
+body {
+    color: white;
 }
 
 /* NavBar */
@@ -22,6 +41,7 @@ nav {
     display: flex;
     justify-content: space-around;
     background-color: black;
+    height: 50px;
 }
 
 body{
@@ -62,8 +82,12 @@ body{
 }
 
 /* first page container */
-.page {
-    background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
+.first-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 300px;
+    height: 100vh;
 }
 
 .container {
@@ -72,7 +96,6 @@ body{
     flex-wrap: wrap;
     align-items: center;
     background: transparent;
-
 }
 
 p {
