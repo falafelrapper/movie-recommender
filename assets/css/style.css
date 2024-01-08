@@ -36,7 +36,7 @@ p {
 }
 
 body {
-    color: white;
+    color:blue (255, 255, 255);
 }
 
 /* NavBar */
@@ -44,11 +44,8 @@ body {
 nav {
     display: flex;
     justify-content: space-around;
-
-}
-
-body{
-    min-height: 1000px;
+    background-color: black;
+    height: 50px;
 }
 
 /* Nav. favorite & home  button*/
@@ -60,7 +57,6 @@ body{
     border: none;
     font-size: medium;
     font-weight: bolder;
-    color: var(--black);
 }
 
 .title,
@@ -144,9 +140,6 @@ body h2{
 }
 
 /* display:none hides the containers box except the starter page */
-.hidden{
-    display: none; 
-}
 .recommend-page {
     display: flex;
     flex-direction: column;
@@ -154,6 +147,10 @@ body h2{
     align-items: center;
 }
 
-.hidden{
-    display: none; 
+.movie-title {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
 }
