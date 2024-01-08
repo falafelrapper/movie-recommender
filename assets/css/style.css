@@ -29,7 +29,12 @@ h2 strong {
     color: white;
     font-size: 20px;
     font-style: italic;
+    justify-content: space-around;
+    display: flex;
 }
+
+
+
 h2 {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:rgb(232, 232, 70);
@@ -160,4 +165,8 @@ body h2{
 
 .hidden {
     display: none;
+}
+.button-is-link{
+    justify-content: space-around;
+    
 }
