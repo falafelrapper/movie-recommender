@@ -1,4 +1,3 @@
-<!-- Starter Page -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,19 +14,17 @@
     <!-- Nav Bar  -->
     <header>
         <nav>
-            <a href="./index.html" id="home-bttn">Home</a>
-            <a href="./favorites.html" id="fav-bttn">Favorites</a>
+            <a href="./index.html" id="home-bttn" alt="Navigate to home page">Home</a>
+            <a href="./favorites.html" id="fav-bttn" alt="Navigate to favorites page">Favorites</a>
         </nav>
     </header>
     <!-- intro information w/ input -->
     <div class="first-page page">
         <div>
-            <div class="container" id="firstPage">
+            <div class="container">
                 <h1 class="title"><strong>Movie Recommender</strong></h1>
                 <p class="subtitle">Let us help you search for movies!<i class="fa-solid fa-film"></i></p>
-            </div>
-            <div class="input-area">
-                <input class="input" type="text" id="genreInput" placeholder="Text input">
+                <input class="input" type="text" id="genreInput" placeholder="Enter a genre">
                 <div class="page1Bttn">
                     <input class="button is-link" type="submit" id="pickMe" value="Pick for Me">
                     <input class="button is-link" type="submit" id="recommendMe" value="Recommended">
@@ -38,31 +35,28 @@
     <!-- First page ends here -->
     <!-- second page starts here -->
     <div class="recommend-page hidden page">
-        <p>
         <h2 class="title">Here are 5 recommended movies for you!</h2>
-        </p>
         <div id="recommendList"></div>
-        <button class="button is-link" id="refresh-recommend" type="submit">Refresh</button>
+        <button class="button is-link" type="submit">Refresh</button>
     </div>
     <!-- Second page ends here -->
     <!--third page-->
     <div class="movie-page hidden page">
-        <img src="" alt="">
-        <h3>name of movie </h3>
-        <h3>genre</h3>
-        <h3>Rating </h3>
-        <h3>description</h3>
-        <button class="button  is-link" type="submit">Go back</button>
+        <img src="" alt="Poster images">
+        <h3>Name of movie</h3>
+        <h3>Genre</h3>
+        <h3>Rating</h3>
+        <h3>Description</h3>
+        <button class="button is-link" type="sumbit">Go back</button>
     </div>
     <!-- end of  third page-->
     <!-- start of pick page -->
     <div class="pick-page hidden page">
         <h2>Here is your picked movie!</h2>
         <div id="recommendList"></div>
-        <button class="button is-link" id="refresh-pick" type="submit">Refresh</button>
+        <button class="button is-link" type="submit">Refresh</button>
     </div>
     <!-- end of pick page -->
-
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
