@@ -32,19 +32,10 @@ h2 {
     margin: 0;
     display: flex;
     justify-content: center;
-    
-    
-
-
-}
-
-
-
-h2 {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(171, 171, 43);
     margin-top: 40px;
 }
+
 p {
     color: var(--white);
     margin: 15px 15px;
