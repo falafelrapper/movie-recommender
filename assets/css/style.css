@@ -167,6 +167,14 @@ body h2{
     display: none;
 }
 .button-is-link{
-    justify-content: space-around;
-    
+    color: black ;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: var(--bright-turquoise)
+
 }
+
+
+
+    

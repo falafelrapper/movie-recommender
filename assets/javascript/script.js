@@ -198,7 +198,7 @@ function displayMovies(movies) {
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
     movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
-    movieCard.append('<button class="button" type="submit">Read More</button>');
+    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button" type="submit">Read More</a>');
 
     recommendationList.append(movieCard);
   });
