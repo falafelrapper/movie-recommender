@@ -25,14 +25,24 @@ h2 {
     color: white;
 }
 /* adding font color and size*/
-h2 strong {
-    color: white;
+h2 {
+    color:rgb(171, 171, 43);
     font-size: 20px;
     font-style: italic;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    
+    
+
+
 }
+
+
+
 h2 {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:rgb(232, 232, 70);
+    color:rgb(171, 171, 43);
     margin-top: 40px;
 }
 p {
@@ -161,3 +171,15 @@ body h2{
 .hidden {
     display: none;
 }
+.button-is-link{
+    color: black ;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: var(--bright-turquoise)
+
+}
+
+
+
+    
