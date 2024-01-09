@@ -68,7 +68,7 @@ function getGenreId(genreName) {
 
 function randomRecommend() {
   var selectedGenre = genreInput.val();
-  var totalPages = 50;
+  var totalPages = 40;
   var allMovies = [];
 
   var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
@@ -130,7 +130,7 @@ function fetchMovies(selectedGenre, page) {
 
 function randomPicker() {
   var selectedGenre = genreInput.val();
-  var totalPages = 50;
+  var totalPages = 20;
   var allMovies = [];
 
   var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
@@ -150,10 +150,10 @@ function randomPicker() {
 
         console.log('Randomly selected movies:', randomMovies);
 
-        displayMovies(randomMovies);
+        displayMoviesPick(randomMovies);
 
         firstPage.addClass('hidden');
-        recommendPage.removeClass('hidden');
+        pickPage.removeClass('hidden');
       } else {
         console.warn('No top-rated movies found.');
       }
@@ -205,7 +205,7 @@ function displayMovies(movies) {
   previousMovies = movies;
 }
 
-function displayMoviesPick(movies, genre) {
+function displayMoviesPick(movies) {
   var pickList = $('#pick-list');
   pickList.empty();
 
@@ -239,7 +239,7 @@ function addToFavorites(movieId) {
 
 function refreshRec() {
   var selectedGenre = genreInput.val();
-  var totalPages = 50;
+  var totalPages = 40;
   var allMovies = [];
 
   var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
@@ -271,7 +271,7 @@ function refreshRec() {
 
 function refreshPick() {
   var selectedGenre = genreInput.val();
-  var totalPages = 50;
+  var totalPages = 20;
   var allMovies = [];
 
   var fetchPromises = Array.from({ length: totalPages }, (_, page) =>
@@ -291,9 +291,9 @@ function refreshPick() {
 
         console.log('Randomly selected new movies:', randomMovies);
 
-        $('#recommendList').empty();
+        $('#pick-list').empty();
 
-        displayMovies(randomMovies);
+        displayMoviesPick(randomMovies);
       } else {
         console.warn('No top-rated movies found.');
       }
