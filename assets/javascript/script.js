@@ -215,7 +215,7 @@ function displayMoviesPick(movies, genre) {
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
     movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
-    movieCard.append('<button class="button" type="submit">Read More</button>');
+    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button" type="submit">Read More</a>');
 
     pickList.append(movieCard);
   });
@@ -224,15 +224,16 @@ function displayMoviesPick(movies, genre) {
 
 function addToFavorites(movieId) {
   var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  var movie = previousMovies.find((m) => m.id === movieId);
 
-  if (!favorites.includes(movieId)) {
-    favorites.push(movieId);
+  if (movie && !favorites.some((fav) => fav.id === movieId)) {
+    favorites.push(movie);
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
 
-    console.log('Movie added to favorites!');
+    console.log('Movie added to favorites!', movie);
   } else {
-    console.log('Movie is already in favorites!');
+    console.log('Movie is already in favorites or not found!');
   }
 }
 
