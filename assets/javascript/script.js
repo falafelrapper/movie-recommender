@@ -1,5 +1,6 @@
 // Main Script
 
+// All of our document selector variables
 var genreInput = $('#genreInput');
 var pickForMe = $('#pickMe');
 var recommendation = $('#recommendMe');
@@ -9,11 +10,13 @@ var pickPage = $('.pick-page');
 var refreshRecommend = $('#refresh-recommend');
 var refreshPicker = $('#refresh-pick');
 
+// API variables, including the URL and key
 const apiKey = '8a85a81d0a75e85da785e682ae2cc11d';
 const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
 
 var selectedMovieIds = [];
 
+// Genres for our search bar
 var genres = [
   "Action",
   "Adventure",
@@ -39,6 +42,7 @@ $("#genreInput").autocomplete({
   source: genres
 });
 
+// Mapping for our genres so they can be used to search TMDB
 var genreMapping = {
   "Action": 28,
   "Adventure": 12,
@@ -61,11 +65,12 @@ var genreMapping = {
   "Western": 37
 };
 
+// Maps the genre that was inputted to a search bar to the corresponding ID
 function getGenreId(genreName) {
   return genreMapping[genreName] || null;
 }
 
-
+// Runs the function for the Recommend for Me button
 function randomRecommend() {
   var selectedGenre = genreInput.val();
   var totalPages = 40;
@@ -99,6 +104,7 @@ function randomRecommend() {
     .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
+// Fetches movie data for randomRecommend
 function fetchMovies(selectedGenre, page) {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -127,7 +133,7 @@ function fetchMovies(selectedGenre, page) {
 }
 
 
-
+// Runs the function for when you click Pick for Me
 function randomPicker() {
   var selectedGenre = genreInput.val();
   var totalPages = 20;
@@ -161,6 +167,7 @@ function randomPicker() {
     .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
+// Runs the same function as fetchMovies, however limits to one movie instead
 function fetchMoviesForPicker(selectedGenre, page) {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -188,6 +195,7 @@ function fetchMoviesForPicker(selectedGenre, page) {
   });
 }
 
+// Runs the function to display the movies after the previous functions have run, appending to their respective divs
 function displayMovies(movies) {
   var recommendationList = $('#recommendList');
   recommendationList.empty();
@@ -205,6 +213,7 @@ function displayMovies(movies) {
   previousMovies = movies;
 }
 
+// Same thing as displayMovies() however it appends to the Pick for Me button's div
 function displayMoviesPick(movies) {
   var pickList = $('#pick-list');
   pickList.empty();
@@ -222,6 +231,7 @@ function displayMoviesPick(movies) {
   previousMovies = movies;
 }
 
+// Runs the function that allows you to save a movie to your favorites
 function addToFavorites(movieId) {
   var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   var movie = previousMovies.find((m) => m.id === movieId);
@@ -237,6 +247,7 @@ function addToFavorites(movieId) {
   }
 }
 
+// Function that runs when you refresh on the Recommend page
 function refreshRec() {
   var selectedGenre = genreInput.val();
   var totalPages = 40;
@@ -269,6 +280,7 @@ function refreshRec() {
     .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
+// Function that runs when you refresh on the Pick for Me page
 function refreshPick() {
   var selectedGenre = genreInput.val();
   var totalPages = 20;
@@ -301,6 +313,7 @@ function refreshPick() {
     .catch(error => console.error('Error fetching data from TMDb:', error));
 }
 
+// Event listeners
 $(recommendation).click(randomRecommend);
 $(refreshRecommend).click(refreshRec);
 $(refreshPicker).click(refreshPick);
