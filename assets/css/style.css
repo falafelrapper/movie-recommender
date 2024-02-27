@@ -44,10 +44,17 @@ p {
 body {
     color: white;
     background-image: url(../image/wp10674103-film-roll-wallpapers.jpg);
-    min-height: 1000px;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
 }
 
 /* NavBar */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 
 nav {
     display: flex;
