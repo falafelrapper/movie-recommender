@@ -205,8 +205,8 @@ function displayMovies(movies) {
     movieCard.append('<h2>' + movie.title + '</h2>');
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
-    movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
-    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button" type="submit">Read More</a>');
+    movieCard.append('<button class="button is-link add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
+    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button is-link" type="submit">Read More</a>');
 
     recommendationList.append(movieCard);
   });
@@ -223,8 +223,8 @@ function displayMoviesPick(movies) {
     movieCard.append('<h2>' + movie.title + '</h2>');
     movieCard.append('<p>' + movie.overview + '</p>');
     movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
-    movieCard.append('<button class="button add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
-    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button" type="submit">Read More</a>');
+    movieCard.append('<button class="button is-link add-favorite" data-movie-id="' + movie.id + '">Add to Favorites</button>');
+    movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button is-link" type="submit">Read More</a>');
 
     pickList.append(movieCard);
   });

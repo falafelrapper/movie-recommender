@@ -12,6 +12,7 @@
     --gin: #e0eae4;
     --heliotrope: hsl(298, 57%, 70%);
     --sky-blue: #42cce1ff;
+    --card-background: #000000cc;
 }
 
 /* all style applied to page class */
@@ -72,6 +73,7 @@ nav {
     border: none;
     font-size: medium;
     font-weight: bolder;
+    transition: ease-in-out .2s;
 }
 
 .title,
@@ -82,7 +84,6 @@ nav {
 #fav-bttn:hover {
     color: rgb(248, 248, 0);
     cursor: pointer;
-    font-style: italic;
     font-weight: bold;
     text-shadow: var(--bright-turquoise)
 }
@@ -90,7 +91,6 @@ nav {
 #home-bttn:hover {
     color: rgb(248, 248, 0);
     cursor: pointer;
-    font-style: italic;
     font-weight: bold;
     text-shadow: var(--bright-turquoise)
 }
@@ -100,7 +100,6 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 300px;
     height: 100vh;
 }
 
@@ -110,7 +109,6 @@ nav {
     flex-wrap: wrap;
     align-items: center;
     background: transparent;
-
 }
 
 .saved-favorites{
@@ -146,17 +144,27 @@ ul {
 .movie-card {
     display: flex;
     padding: 20px;
-    margin: 30px 30px 0;
+    margin: 30px 10vw 0;
+    border-radius: 10px;
+    text-align: center;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     outline: 6px ridge var(--gin);
     outline-color: lightgray;
     outline-offset: -5px;
+    background-color: var(--card-background);
 }
 
 .button {
     margin: 10px;
+    transition: ease-in-out .5s;
+    background-color: #485fc7;
+    color: var(--gin);
+}
+
+.button:hover{
+    background-color: #28387e;
 }
 
 body h2{
@@ -167,10 +175,19 @@ body h2{
 /* display:none hides the containers box except the starter page */
 .recommend-page,
 .pick-page {
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.pick-page{
+    min-height: 95vh;
+}
+
+.recommend-page{
+    padding-bottom: 5vh;
 }
 
 .movie-title {
@@ -180,7 +197,7 @@ body h2{
 .hidden {
     display: none;
 }
-.button-is-link{
+.is-link{
     color: black ;
     cursor: pointer;
     font-style: italic;
@@ -189,6 +206,8 @@ body h2{
 
 }
 
-
+.localstoragelist{
+    padding-bottom: 10vh;
+}
 
     

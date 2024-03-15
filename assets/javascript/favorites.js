@@ -22,8 +22,8 @@ function displayFavorites(){
         movieCard.append('<h2>' + movie.title + '</h2>');
         movieCard.append('<p>' + movie.overview + '</p>');
         movieCard.append('<img src="https://image.tmdb.org/t/p/w200/' + movie.poster_path + '" alt="' + movie.title + '">');
-        movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button" type="submit">Read More</a>');
-        movieCard.append('<button class="button remove-favorite" data-movie-id="' + movie.id + '">Remove from Favorites</button>');
+        movieCard.append('<a href="https://www.themoviedb.org/movie/' + movie.id + '-' + movie.title + '" target="_blank" class="button is-link" type="submit">Read More</a>');
+        movieCard.append('<button class="button is-link remove-favorite" data-movie-id="' + movie.id + '">Remove from Favorites</button>');
         
         favorite.append(movieCard);
       });
